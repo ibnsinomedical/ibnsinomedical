@@ -803,16 +803,16 @@
 
     <!-- LEAVES -->
     <script>
-        function spawnLeaf() {
-            const l = document.createElement('div');
-            l.className = 'leaf';
-            l.textContent = ['🍃', '🌿', '🍀'][Math.floor(Math.random() * 3)];
-            l.style.left = Math.random() * 100 + 'vw';
-            l.style.animationDuration = (7 + Math.random() * 6) + 's';
-            document.body.appendChild(l);
-            setTimeout(() => l.remove(), 13000);
-        }
-        setInterval(spawnLeaf, 1200);
+                function spawnLeaf() {
+                    const l = document.createElement('div');
+                    l.className = 'leaf';
+                    l.textContent = ['🍃', '🌿', '🍀'][Math.floor(Math.random() * 3)];
+                    l.style.left = Math.random() * 100 + 'vw';
+                    l.style.animationDuration = (7 + Math.random() * 6) + 's';
+                    document.body.appendChild(l);
+                    setTimeout(() => l.remove(), 13000);
+                }
+                setInterval(spawnLeaf, 1200);
     </script>
 
     <!-- HEADER -->
@@ -931,9 +931,6 @@
                 <h3>Стоматолог</h3>
                 <p>Лечение, протезирование и профилактика стоматологических заболеваний. Кабинет оснащён современным оборудованием, что делает лечение комфортным и малоболезненным для пациента.</p>
                 <div id="dent" class="collapsed doctor-list-inner">
-                    <div class="doc-item" onclick="showDoc(event,'Мавлонов Мираббос Фарходович','Стоматолог','Стоматолог с опытом более 7 лет.')">
-                        <div class="doc-avatar">ММ</div> Мавлонов М.Ф.
-                    </div>
                     <div class="doc-item" onclick="showDoc(event,'Саидов Комил Абдулхаевич','Стоматолог','Стоматолог с опытом более 15 лет за рубежом, общий стаж — более 30 лет.')">
                         <div class="doc-avatar">СК</div> Саидов К.А.
                     </div>
@@ -1041,56 +1038,56 @@
     </div>
 
     <script>
-        function toggleDocs(card, id) {
-            document.querySelectorAll('.doctor-list-inner').forEach(el => {
-                if (el.id !== id) { el.className = 'collapsed doctor-list-inner'; }
-            });
-            const el = document.getElementById(id);
-            if (!el) return;
-            el.className = el.classList.contains('expanded')
-                ? 'collapsed doctor-list-inner'
-                : 'expanded doctor-list-inner';
-        }
+                function toggleDocs(card, id) {
+                    document.querySelectorAll('.doctor-list-inner').forEach(el => {
+                        if (el.id !== id) { el.className = 'collapsed doctor-list-inner'; }
+                    });
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    el.className = el.classList.contains('expanded')
+                        ? 'collapsed doctor-list-inner'
+                        : 'expanded doctor-list-inner';
+                }
 
-        function showDoc(e, name, spec, bio, photo) {
-            e.stopPropagation();
-            const initials = name.split(' ').map(w => w[0]).join('').slice(0, 2);
-            const photoEl = document.getElementById('modal-photo');
-            const avatarEl = document.getElementById('modal-avatar');
+                function showDoc(e, name, spec, bio, photo) {
+                    e.stopPropagation();
+                    const initials = name.split(' ').map(w => w[0]).join('').slice(0, 2);
+                    const photoEl = document.getElementById('modal-photo');
+                    const avatarEl = document.getElementById('modal-avatar');
 
-            if (photo) {
-                photoEl.src = photo;
-                photoEl.alt = name;
-                photoEl.style.display = 'block';
-                avatarEl.style.display = 'none';
-            } else {
-                photoEl.style.display = 'none';
-                avatarEl.style.display = 'flex';
-                avatarEl.textContent = initials;
-            }
+                    if (photo) {
+                        photoEl.src = photo;
+                        photoEl.alt = name;
+                        photoEl.style.display = 'block';
+                        avatarEl.style.display = 'none';
+                    } else {
+                        photoEl.style.display = 'none';
+                        avatarEl.style.display = 'flex';
+                        avatarEl.textContent = initials;
+                    }
 
-            document.getElementById('modal-name').textContent = name;
-            document.getElementById('modal-spec').textContent = spec;
-            document.getElementById('modal-bio').textContent = bio;
-            document.getElementById('modal').classList.add('open');
-        }
+                    document.getElementById('modal-name').textContent = name;
+                    document.getElementById('modal-spec').textContent = spec;
+                    document.getElementById('modal-bio').textContent = bio;
+                    document.getElementById('modal').classList.add('open');
+                }
 
-        function showService(type) {
-            document.getElementById('modal-photo').style.display = 'none';
-            const avatarEl = document.getElementById('modal-avatar');
-            avatarEl.style.display = 'flex';
-            avatarEl.textContent = '🧪';
-            document.getElementById('modal-name').textContent = 'Лаборатория и процедурный кабинет';
-            document.getElementById('modal-spec').textContent = 'Диагностика и процедуры';
-            document.getElementById('modal-bio').textContent = 'Современная лаборатория для анализов с высокой точностью — клиника сотрудничает с лабораторией Vitros, а также процедурный кабинет — внутривенные капельницы и инъекции по назначению врача, выполняемые квалифицированными медсёстрами. Для комфорта пациентов предусмотрены отдельные процедурные комнаты для мужчин и женщин.';
-            document.getElementById('modal').classList.add('open');
-        }
+                function showService(type) {
+                    document.getElementById('modal-photo').style.display = 'none';
+                    const avatarEl = document.getElementById('modal-avatar');
+                    avatarEl.style.display = 'flex';
+                    avatarEl.textContent = '🧪';
+                    document.getElementById('modal-name').textContent = 'Лаборатория и процедурный кабинет';
+                    document.getElementById('modal-spec').textContent = 'Диагностика и процедуры';
+                    document.getElementById('modal-bio').textContent = 'Современная лаборатория для анализов с высокой точностью — клиника сотрудничает с лабораторией Vitros, а также процедурный кабинет — внутривенные капельницы и инъекции по назначению врача, выполняемые квалифицированными медсёстрами. Для комфорта пациентов предусмотрены отдельные процедурные комнаты для мужчин и женщин.';
+                    document.getElementById('modal').classList.add('open');
+                }
 
-        function closeModal(e) {
-            if (e.target === document.getElementById('modal')) {
-                document.getElementById('modal').classList.remove('open');
-            }
-        }
+                function closeModal(e) {
+                    if (e.target === document.getElementById('modal')) {
+                        document.getElementById('modal').classList.remove('open');
+                    }
+                }
     </script>
 </body>
 </html>
